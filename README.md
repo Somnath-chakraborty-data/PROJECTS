@@ -16,21 +16,32 @@ A modern data engineering project demonstrating a hybrid-cloud ETL pipeline. Thi
 * **Version Control:** GitLab & GitHub
 * **Language:** Python 3.12
 
-## 📁 Project Structure
-.
-├── dags/
-│   ├── sales_main_dag.py          # The Airflow orchestration file
-│   └── utils/
-│       └── helpers.py             # Reusable Python functions (e.g., logging)
-├── notebooks/
-│   └── silver_to_gold_sales.py    # Databricks PySpark transformation code
-├── sql/
-│   ├── postgres_init.sql          # Script to set up local DB
-│   └── analytical_queries.sql     # Sample queries for the final Delta Table
-├── config/
-│   ├── airflow_connections.yaml   # (Reference only) Documentation for connections
-│   └── databricks_job_config.json # JSON spec for the Databricks job
-├── .gitignore                     # To hide .env, __pycache__, and DS_Store
-├── README.md                      # Project documentation
-└── requirements.txt               # List of python libraries needed
+🎯 Strategic Goals
+1. Unified Orchestration
+Goal: Move away from "crontabs" and manual scripts.
 
+Vision: Use Airflow to provide a single pane of glass to monitor the health of the entire data journey, from a local Postgres row to a Cloud Delta Table.
+
+2. Scalable Compute Separation
+Goal: Keep the "Extract" light and the "Transform" heavy.
+
+Vision: Use local resources only for data retrieval, offloading the expensive and complex aggregation logic to Spark on Databricks, allowing the system to handle millions of rows without crashing the local source.
+
+3. DevOps Excellence (The Git Bridge)
+Goal: Eliminate "Code Silos."
+
+Vision: Use GitLab for internal development and CI/CD, while automatically mirroring to GitHub for public visibility and redundancy. This demonstrates a "Production-First" mindset where code is never stuck on a single machine.
+
+4. Data Governance & Security
+Goal: Zero-Trust Credential Management.
+
+Vision: Demonstrate that passwords never enter the codebase. By using Secret Scopes and Environment Variables, the project envisions a world where a developer can lose their laptop, but the company's data remains secure.
+
+🚀 The Future Roadmap (Scalability)
+If this project were to grow, the vision includes:
+
+Real-time Streaming: Moving from Batch (Airflow) to Streaming (Spark Structured Streaming).
+
+Data Quality Checks: Integrating Great Expectations to stop the pipeline if the Postgres data is corrupted.
+
+Infrastructure as Code: Using Terraform to deploy the Databricks clusters automatically.
