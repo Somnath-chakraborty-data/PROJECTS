@@ -14,14 +14,23 @@ A modern data engineering project demonstrating a hybrid-cloud ETL pipeline. Thi
 * **Data Processing:** PySpark / Databricks
 * **Database:** PostgreSQL
 * **Version Control:** GitLab & GitHub
-* **Language:** Python 3.x
+* **Language:** Python 3.12
 
 ## 📁 Project Structure
+.
 ├── dags/
-│   └── sales_orchestrator.py      # Airflow DAG defining the workflow
+│   ├── sales_main_dag.py          # The Airflow orchestration file
+│   └── utils/
+│       └── helpers.py             # Reusable Python functions (e.g., logging)
 ├── notebooks/
-│   └── transform_sales.py         # PySpark transformation logic
-├── scripts/
-│   └── init_db.sql                # Postgres schema setup
-├── .gitignore                     # Prevents secrets/env leakage
-└── README.md
+│   └── silver_to_gold_sales.py    # Databricks PySpark transformation code
+├── sql/
+│   ├── postgres_init.sql          # Script to set up local DB
+│   └── analytical_queries.sql     # Sample queries for the final Delta Table
+├── config/
+│   ├── airflow_connections.yaml   # (Reference only) Documentation for connections
+│   └── databricks_job_config.json # JSON spec for the Databricks job
+├── .gitignore                     # To hide .env, __pycache__, and DS_Store
+├── README.md                      # Project documentation
+└── requirements.txt               # List of python libraries needed
+
